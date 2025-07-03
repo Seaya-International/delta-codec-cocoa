@@ -1,12 +1,13 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
 
 let package = Package(
     name: "AblyDeltaCodec",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v10_10),
-        .iOS(.v9),
+        .iOS(.v15),
         .tvOS(.v9),
         .watchOS(.v4)
     ],
@@ -38,6 +39,9 @@ let package = Package(
             	.headerSearchPath("source"),
                 .headerSearchPath("xdelta/xdelta3"),
                 .define("HAVE_DELTA_CONFIG_H", to: "1"),
+            ],
+            linkerSettings: [
+                .linkedFramework("Foundation")
             ]
         )
     ],
